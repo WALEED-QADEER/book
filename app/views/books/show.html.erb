@@ -1,11 +1,8 @@
-<h1><%= @book.title %></h1>
+<%= link_to 'Home', root_path %>
+<h1>Title: <%= @book.title %></h1>
+<span>Pages: <%= @book.pages %></span>
 
-<p><%= @book.content %></p>
+<p>Content: <%= @book.content %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_book_path(@book) %></li>
-  <li><%= link_to "Destroy", book_path(@book), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+
+

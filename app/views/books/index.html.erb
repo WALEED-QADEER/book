@@ -1,10 +1,38 @@
-<h1>Books</h1>
-
-<ul>
-  <% @books.each do |book| %>
-    <li>
-    <%= link_to book.title, book %>
-    </li>
+<%= link_to 'Home', root_path %>
+<br>
+<br>
+<%= form_tag "/books", method: "GET" do %>
+  <%= label_tag :Title %>
+  <%= text_field_tag :search_by_bookname , params[:search_by_bookname ] %>
+  <%= submit_tag "Search" %>
   <% end %>
-</ul>
+<br>
+<table  style = "border:2px solid black">
+<tr>
+    <th  style = "border:1px solid black">Books Title</th>
+   
+    <th  style = "border:1px solid black">Edit</th>
+    <th  style = "border:1px solid black">Delete</th>
+  </tr>
+  <% @books.each do |book| %>
+  <tr>
+    <td><%= link_to book.title, book %></td>
+    
+    
+    <td style = "border:1px solid black"><%= link_to "Edit", edit_book_path(book) %></td>
+    <td  style = "border:1px solid black"><%= link_to "Destroy", book_path(book), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %></td>
+  </tr>
+  <% end %>
+  <tr>
+  <td>
+  <%== pagy_nav(@pagy) %>
+  </td>
+  </tr>
+</table>
+
+
+<br>
 <%= link_to "New Book", new_book_path %>

@@ -1,21 +1,39 @@
-<%= form_with model: @book do |form| %>
+<%= form_with model: @book, local: true do |f| %>
     <div>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
       <% @book.errors.full_messages_for(:title).each do |message| %>
           <div><%= message %></div>
         <% end %>
     </div>
   
     <div>
-      <%= form.label :content %><br>
-      <%= form.text_area :content %>
+      <%= f.label :content %><br>
+      <%= f.text_area :content %>
       <% @book.errors.full_messages_for(:content).each do |message| %>
           <div><%= message %></div>
         <% end %>
     </div>
-  
+    
     <div>
-      <%= form.submit %>
+    <%= f.label :pages %><br>
+    <%= f.text_field :pages %>
+    <% @book.errors.full_messages_for(:pages).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <fieldset>
+  <legend>Author:</legend>
+  <%= f.fields_for :authorbooks do |author| %>
+    <%= render "authorbook_fields", f: author %>
+  <% end %>
+  <%= link_to_add_fields "Add Author", f, :authorbooks %>
+</fieldset>
+
+    
+
+    <div>
+      <%= f.submit %>
     </div>
   <% end %>

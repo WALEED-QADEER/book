@@ -1,0 +1,18 @@
+<%= link_to 'Home', root_path %>
+<h1>Name: <%= @author.name %></h1>
+<h4>Author-ID:<%= @author.id %> </h4>
+
+
+<p>Description: <%= @author.description %></p>
+
+<h2> Books </h2>
+
+<ul>
+<% @author.books.each do |book| %>
+    
+    <li>
+    <%= book.title %>
+    </li>
+   
+    <% end %>
+</ul>

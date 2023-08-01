@@ -27,6 +27,12 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'jquery-rails'
+gem 'byebug', '~> 9.0', '>= 9.0.5'
+gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'cancancan'
+gem 'pundit'
+gem 'pagy', '~> 6.0' # omit patch digit
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
